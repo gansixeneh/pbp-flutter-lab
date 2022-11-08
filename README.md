@@ -1,16 +1,35 @@
-# counter_7
+## Stateless Widget dan Stateful Widget
 
-A new Flutter project.
+- Stateless widget adalah widget yang tidak memiliki state. Perubahan dari stateless widget hanya bergantung dari parent widget tersebut.
 
-## Getting Started
+- Stateful widget adalah widget yang memiliki state. Widget tersebut dapat berubah secara dinamis. Widget tersebut bersifat immutable, tetapi memiliki object State yang menyimpan state widget tersebut.
 
-This project is a starting point for a Flutter application.
+- Perbedaan dari stateless dan stateful widget adalah stateless widget tidak memiliki object State, sedangkan stateful widget sebaliknya.
 
-A few resources to get you started if this is your first Flutter project:
+## Widget yang Digunakan
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Scaffold: menyimpan widget-widget yang akan ditampilkan
+- AppBar: menampilkan judul aplikasi
+- Center: menempatkan child yang dimilikinya di tengah
+- Column: menempatkan children yang dimilikinya secara vertikal
+- MainAxisAlignment: mengatur posisi penempatan widget
+- Row: menempatkan children yang dimilikinya secara horizontal
+- Padding: memberikan padding pada child widget
+- EdgeInsets: memberikan detail padding
+- Visibility: menampilkan/menyembunyikan widget
+- FloatingActionButton: tombol yang dapat ditekan user
+- Icon: ikon yang ditampilkan pada tombol
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Fungsi dari setState()
+setState() berfungsi untuk merubah internal state dari object State yang kita gunakan.
+
+## Perbedaan const dan final
+const adalah konstan yang nilainya ditentukan saat compile-time, sedangkan final adalah konstan yang nilainya ditentukan saat runtime.
+
+## Implementasi Checklist
+- Membuat fungsi untuk mengurangi counter (_decrementCounter())
+- Menambahkan tombol yang memanggil fungsi pada poin 1 ketika ditekan (FloatingActionButton)
+- Membuat state baru, yaitu string _parity yang menyimpan paritas dari counter
+- Menentukan teks yang ditampilkan (GANJIL/GENAP) dan warna teks tersebut (merah/biru) berdasarkan string _parity
+- Memberikan padding pada tombol di poin 2 agar tidak keluar dari layar menggunakan Padding() dan EdgeInsets()
+- Menentukan apakah tombol di poin 2 ditampilkan berdasarkan nilai _counter menggunakan Visibility()
