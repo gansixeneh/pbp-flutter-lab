@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Program Counter',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Program Counter'),
     );
   }
 }
@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _decrementCounter() {
     setState(() {
-      if(_counter > 0) _counter--;
+      if (_counter > 0) _counter--;
       _parity = (_counter % 2 == 0) ? "GENAP" : "GANJIL";
     });
   }
@@ -105,10 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '$_parity',
+              _parity,
               style: TextStyle(
-                color: _parity == "GENAP" ? Colors.red : Colors.blue
-              ),
+                  color: _parity == "GENAP" ? Colors.red : Colors.blue),
             ),
             Text(
               '$_counter',
@@ -117,28 +116,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 30),
+      floatingActionButton:
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Padding(
+            padding: const EdgeInsets.only(left: 30),
             child: Visibility(
+              visible: _counter == 0 ? false : true,
               child: FloatingActionButton(
                 onPressed: _decrementCounter,
                 tooltip: 'Decrement',
                 child: const Icon(Icons.remove),
               ),
-              visible: _counter == 0 ? false : true,
-            )
-          ),
-
-          FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          ),
-        ]
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+            )),
+        FloatingActionButton(
+          onPressed: _incrementCounter,
+          tooltip: 'Increment',
+          child: const Icon(Icons.add),
+        ),
+      ]), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
