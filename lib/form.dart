@@ -1,10 +1,12 @@
 import 'package:counter_7/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 final judul = <String>[];
 final nominal = <int>[];
 final tipe = <String>[];
+final datetime = <String>[];
 
 class MyFormPage extends StatefulWidget {
   const MyFormPage({super.key});
@@ -18,6 +20,7 @@ class _MyFormPageState extends State<MyFormPage> {
   String _judul = "";
   int _nominal = 0;
   String _tipe = "Pilih Judul";
+  TextEditingController dateInput = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +125,36 @@ class _MyFormPageState extends State<MyFormPage> {
                 },
                 hint: Text(_tipe),
               )),
+              TextField(
+                controller: dateInput,
+                decoration: InputDecoration(
+                    icon: Icon(Icons.calendar_today), //icon of text field
+                    labelText: "Enter Date" //label text of field
+                    ),
+                readOnly: true,
+//set it true, so that user will not able to edit text
+                onTap: () async {
+                  DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(1950),
+//DateTime.now() - not to allow to choose before today.
+                      lastDate: DateTime(2100));
+
+                  if (pickedDate != null) {
+                    print(
+                        pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                    String formattedDate =
+                        DateFormat('yyyy-MM-dd').format(pickedDate);
+                    print(
+                        formattedDate); //formatted date output using intl package =>  2021-03-16
+                    setState(() {
+                      dateInput.text =
+                          formattedDate; //set output date to TextField value.
+                    });
+                  } else {}
+                },
+              ),
               const Spacer(),
               TextButton(
                 style: ButtonStyle(
@@ -133,31 +166,34 @@ class _MyFormPageState extends State<MyFormPage> {
                     judul.add(_judul);
                     nominal.add(_nominal);
                     tipe.add(_tipe);
+                    datetime.add(dateInput.toString());
                     showDialog(
-                context: context,
-                builder: (context) {
-                  return Dialog(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    elevation: 15,
-                    child: ListView(
-                      padding: const EdgeInsets.only(top: 20, bottom: 20),
-                      shrinkWrap: true,
-                      children: <Widget>[
-                        const Center(child: Text('Data telah berhasil disimpan :D')),
-                        const SizedBox(height: 20),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text('Kembali'),
-                        ), 
-                      ],
-                    ),
-                  );
-                },
-              );
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          elevation: 15,
+                          child: ListView(
+                            padding: const EdgeInsets.only(top: 20, bottom: 20),
+                            shrinkWrap: true,
+                            children: <Widget>[
+                              const Center(
+                                  child:
+                                      Text('Data telah berhasil disimpan :D')),
+                              const SizedBox(height: 20),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('Kembali'),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
                   }
                 },
                 child: const Text(
