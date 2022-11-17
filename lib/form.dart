@@ -23,9 +23,9 @@ class _MyFormPageState extends State<MyFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tambah Budget'),
+        title: const Text('Tambah Budget'),
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: Form(
         key: _formKey,
         child: Container(
@@ -84,15 +84,17 @@ class _MyFormPageState extends State<MyFormPage> {
                   // Menambahkan behavior saat nama diketik
                   onChanged: (String? value) {
                     setState(() {
-                      if (value != null && !value.isEmpty)
-                        _nominal = int.parse(value!);
+                      if (value != null && value.isNotEmpty) {
+                        _nominal = int.parse(value);
+                      }
                     });
                   },
                   // Menambahkan behavior saat data disimpan
                   onSaved: (String? value) {
                     setState(() {
-                      if (value != null && !value.isEmpty)
-                        _nominal = int.parse(value!);
+                      if (value != null && value.isNotEmpty) {
+                        _nominal = int.parse(value);
+                      }
                     });
                   },
                   // Validator sebagai validasi form
@@ -120,12 +122,8 @@ class _MyFormPageState extends State<MyFormPage> {
                 },
                 hint: Text(_tipe),
               )),
-              Spacer(),
+              const Spacer(),
               TextButton(
-                child: const Text(
-                  "Simpan",
-                  style: TextStyle(color: Colors.white),
-                ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.blue),
                 ),
@@ -137,6 +135,10 @@ class _MyFormPageState extends State<MyFormPage> {
                     tipe.add(_tipe);
                   }
                 },
+                child: const Text(
+                  "Simpan",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),
@@ -158,9 +160,9 @@ class _MyDataPageState extends State<MyDataPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Data Budget'),
+        title: const Text('Data Budget'),
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: ListView.builder(
           padding: const EdgeInsets.all(8),
           itemCount: tipe.length,
@@ -168,13 +170,13 @@ class _MyDataPageState extends State<MyDataPage> {
             return Card(
                 child: ListTile(
               title: Padding(
-                  padding: EdgeInsets.all(3),
+                  padding: const EdgeInsets.all(3),
                   child: Text(
                     judul[index],
-                    style: TextStyle(fontSize: 25),
+                    style: const TextStyle(fontSize: 25),
                   )),
               subtitle: Padding(
-                  padding: EdgeInsets.all(3),
+                  padding: const EdgeInsets.all(3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
