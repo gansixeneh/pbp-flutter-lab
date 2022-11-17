@@ -23,28 +23,33 @@ class _MyDataPageState extends State<MyDataPage> {
           itemBuilder: (BuildContext context, int index) {
             return Card(
                 child: ListTile(
-              title: Padding(
-                  padding: const EdgeInsets.all(3),
-                  child: Text(
-                    judul[index],
-                    style: const TextStyle(fontSize: 25),
-                  )),
-              subtitle: Padding(
-                  padding: const EdgeInsets.all(3),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "${nominal[index]}",
-                        style: TextStyle(color: Colors.black.withOpacity(1.0)),
-                      ),
-                      Text(
-                        tipe[index],
-                        style: TextStyle(color: Colors.black.withOpacity(1.0)),
-                      ),
-                    ],
-                  )),
-            ));
+                    title: Padding(
+                        padding: const EdgeInsets.all(3),
+                        child: Text(
+                          judul[index],
+                          style: const TextStyle(fontSize: 25),
+                        )),
+                    subtitle: Padding(
+                      padding: const EdgeInsets.all(3),
+                      child: Column(children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "${nominal[index]}",
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(1.0)),
+                            ),
+                            Text(
+                              tipe[index],
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(1.0)),
+                            ),
+                          ],
+                        ),
+                        Text(datetime[index])
+                      ]),
+                    )));
           }),
     );
   }

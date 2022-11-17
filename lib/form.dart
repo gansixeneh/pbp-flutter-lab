@@ -166,7 +166,7 @@ class _MyFormPageState extends State<MyFormPage> {
                     judul.add(_judul);
                     nominal.add(_nominal);
                     tipe.add(_tipe);
-                    datetime.add(dateInput.toString());
+                    datetime.add(dateInput.text);
                     showDialog(
                       context: context,
                       builder: (context) {
