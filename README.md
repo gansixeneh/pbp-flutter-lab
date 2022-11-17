@@ -79,3 +79,17 @@ Pada flutter, struktur yang digunakan untuk navigasi adalah stack. Navigator.pus
 ## Cara kerja Navigator dalam "mengganti" halaman
 
 Struktur penyimpanan Navigator adalah stack yang menyimpan Route, yaitu screen yang dapat ditampilkan. Navigator menampilkan screen yang ada di paling atas stack. Untuk melakukan perubahan pada screen yang ditampilkan, Navigator melakukan push (menambah screen baru di bagian atas) atau pop (menghapus screen paling atas).
+
+## Implementasi Checklist
+
+- Menambahkan drawer/hamburger menggunakan Drawer() yang dapat melakukan routing ke setiap screen yang ada ketika ditekan, yaitu menggunakan onTap(), Navigator.pushReplacement(), dan MaterialPageRoute()
+
+- Membuat Form() yang berisi TextFormField(). Agar input yang diberikan selalu integer, diberikan constraint keyboardType: TextInputType.number. Data-data pada field disimpen pada variabel tertentu.
+
+- Membuat dropdown dan menyediakan pilihan "Pemasukan" dan "Pengeluaran". Pilihan user juga akan disimpan dalam suatu variabel.
+
+- Membuat TextButton yang memasukkan data-data yang ada pada form dalam suatu List.
+
+- Menampilkan List menggunakan ListView. Setiap index akan menampilkan Card yang berisi ListTile. Setiap ListTile akan menampilkan judul sebagai title, serta tipe dan nominal budget pada subtitle. Font dari judul diubah menggunakan TextStyle, sedangkan opacity dari tipe dan nominal budget juga diubah menggunakan TextStyle.
+
+- Agar tipe dan nominal budget ditampilkan sejajar, digunakan widget Row().
