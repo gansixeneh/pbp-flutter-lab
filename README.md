@@ -93,3 +93,36 @@ Struktur penyimpanan Navigator adalah stack yang menyimpan Route, yaitu screen y
 - Menampilkan List menggunakan ListView. Setiap index akan menampilkan Card yang berisi ListTile. Setiap ListTile akan menampilkan judul sebagai title, serta tipe dan nominal budget pada subtitle. Font dari judul diubah menggunakan TextStyle, sedangkan opacity dari tipe dan nominal budget juga diubah menggunakan TextStyle.
 
 - Agar tipe dan nominal budget ditampilkan sejajar, digunakan widget Row().
+
+
+# Tugas 9
+
+## Pengambilan Data JSON tanpa Model
+
+Ya, pengambilan data tetap bisa dilakukan tanpa pembuatan model. Tetapi, pembuatan model lebih direkomendasikan, karena dapat mempermudah pemrosesan data JSON yang diambil.
+
+## Widget yang Digunakan
+
+- TextStyle: mengatur style teks (bold, size, dll)
+- BoxDecoration: memberikan dekorasi pada box
+- Checkbox: checkbox yang dapat dicentang
+- SizedBox: mengatur ukuran box (agar dapat melebar)
+- ColoredBox: mewarnai box
+- FutureBuilder: Widget yang melakukan build sesuai dengan snapshot terakhir suatu Future
+- TextButton: button yang berisi teks
+- ListView: menampilkan beberapa widget secara berurutan
+- RichText: menampilkan teks yang rich (memiliki style yang berbeda-beda)
+- TextSpan: menampilkan teks dengan style yang berbeda-beda dalam satu line
+- DateFormat: mengubah format dari suatu tanggal
+
+## Mekanisme Pengambilan Data JSON
+
+- Membuat Models yang sesuai dengan data yang akan diambil
+- Membuat fungsi yang dapat mengubah data JSON menjadi sesuai dengan Models, dan sebaliknya.
+
+## Implementasi Checklist
+
+- Membuat mywatchlist.dart pada folder model yang dapat memproses data JSON yang akan diambil dari server
+- Membuat fungsi fetch yang dapat memproses data JSON dari server menjadi sebuah list pada mywatchlist_fetch.dart
+- Menampilkan data yang sudah di-fetch menggunakan ListView pada mywatchlist_page.dart
+- Membuat page pada mywatchlist_detail.dart yang akan menampilkan detail data. Page tersebut akan diakses ketika ListTile pada mywatchlist_page.dart ditekan dan akan menerima argumen fields yang akan ditampilkan.
