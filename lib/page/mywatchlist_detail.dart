@@ -106,12 +106,7 @@ class _MywatchlistDetailState extends State<MywatchlistDetail> {
                           padding: EdgeInsets.all(20),
                           child: TextButton(
                             onPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const MywatchlistPage()),
-                              );
+                              Navigator.pop(context);
                             },
                             child: Text(
                               'Back',

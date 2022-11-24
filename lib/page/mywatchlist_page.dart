@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:counter_7/page/drawer.dart';
 import 'package:counter_7/page/mywatchlist_detail.dart';
 import 'package:counter_7/page/mywatchlist_fetch.dart';
+import 'package:counter_7/model/mywatchlist.dart';
 
 class MywatchlistPage extends StatefulWidget {
   const MywatchlistPage({Key? key}) : super(key: key);
@@ -11,6 +12,14 @@ class MywatchlistPage extends StatefulWidget {
 }
 
 class _MywatchlistPageState extends State<MywatchlistPage> {
+  late final Future<List<Mywatchlist>> list_watchlist;
+
+  @override
+  void initState() {
+    super.initState();
+    list_watchlist = fetchMywatchList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +28,7 @@ class _MywatchlistPageState extends State<MywatchlistPage> {
         ),
         drawer: const AppDrawer(),
         body: FutureBuilder(
-            future: fetchMywatchList(),
+            future: list_watchlist,
             builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
                 return const Center(child: CircularProgressIndicator());
@@ -61,7 +70,7 @@ class _MywatchlistPageState extends State<MywatchlistPage> {
                                 },
                               ),
                               onTap: () {
-                                Navigator.pushReplacement(
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => MywatchlistDetail(
